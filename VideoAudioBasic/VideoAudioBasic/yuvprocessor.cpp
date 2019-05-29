@@ -68,7 +68,7 @@ unsigned char clip_value(unsigned char x, unsigned char min, unsigned char max) 
 int rgb24_yuv420(char *rgbUrl, int w, int h) {
     
     FILE *fp = fopen(rgbUrl, "rb+");
-    FILE *yuvFp = fopen("output_rgb2_yuv.yuv", "wb+");
+    FILE *yuvFp = fopen("output_rgb2_yuv1.yuv", "wb+");
     unsigned char *yuvBuf = (unsigned char *)malloc(w*h*3/2);
     unsigned char *rgbBuf = (unsigned char *)malloc(w*h*3);
     
@@ -98,6 +98,7 @@ int rgb24_yuv420(char *rgbUrl, int w, int h) {
             //根据转换矩阵，转换成y，u，v
             y = (unsigned char)((66 * r + 129 * g +  25 * b + 128) >> 8) + 16;
             *(ptrY++) = clip_value(y, 0, 255);
+            
             if (j%2==0 && i%2==0) {  //yuv420对应的是每2x2个矩阵对应一个uv分量。
                 u = (unsigned char)((-38 * r -  74 * g + 112 * b + 128) >> 8) + 128;
                 *(ptrU++) = clip_value(u, 0, 255);
@@ -115,3 +116,46 @@ int rgb24_yuv420(char *rgbUrl, int w, int h) {
 }
 
 
+//YUV420P （yyyyyyyyyyyyyuuuuuuvvvvvv）排列的yuv420图片转换成rgb24格式
+int yuv420_rgb(char *yuvUrl, int w, int h) {
+    FILE *fp = fopen(yuvUrl, "rb+");
+    FILE *rgbFp = fopen("output_yuv2rgb.rgb", "wb+");
+    
+    unsigned char *yuvBuffer = (unsigned char *)malloc(w*h*3/2);
+    unsigned char *rgbBuffer = (unsigned char *)malloc(w*h*3);
+    
+    fread(yuvBuffer, 1, w*h*3/2, fp);
+    memset(rgbBuffer, 0, w*h*3);
+    
+    unsigned char *ptrRGB = rgbBuffer;
+    unsigned char *ptrY, *ptrU, *ptrV;  //y u v三个通量指针地址
+    int y, u, v, r, g, b;
+
+    ptrY = yuvBuffer;
+    ptrU = yuvBuffer + w*h;
+    ptrV = ptrU + ((w*h)>>2);
+
+    for (int j=0; j<h; j++) {
+        for (int i=0; i<w; i++) {            
+            y = (int)ptrY[j * w + i];
+            
+            //每2*2个矩阵共用一个u和v
+            u = (int)(ptrU[(j>>1) * (w>>1) + (i>>1)] - 128);
+            v = (int)(ptrV[(j>>1) * (w>>1) + (i>>1)] - 128);
+    
+            r = ((256 * y + (351 * v))>>8);
+            g = ((256 * y - (86  * u) - (179 * v))>>8);
+            b = ((256 * y + (444 * u))>>8);
+
+            *(ptrRGB++) = (char)r;
+            *(ptrRGB++) = (char)g;
+            *(ptrRGB++) = (char)b;
+        }
+    }
+    fwrite(rgbBuffer, 1, w*h*3, rgbFp);
+    free(rgbBuffer);
+    free(yuvBuffer);
+    fclose(fp);
+    fclose(rgbFp);
+    return 0;
+}

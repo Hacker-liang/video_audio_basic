@@ -17,4 +17,6 @@ int yuv420_gray(char *url, int w, int h);
 
 int rgb24_yuv420(char *rgbUrl, int w, int h);
 
+int yuv420_rgb(char *yuvUrl, int w, int h);
+
 #endif /* yuvprocessor_hpp */

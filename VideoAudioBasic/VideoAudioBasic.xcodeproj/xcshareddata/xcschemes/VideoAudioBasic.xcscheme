@@ -47,7 +47,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "YES"
-      customWorkingDirectory = "/Users/liangpengshuai/iQIYI/&#x97f3;&#x89c6;&#x9891;&#x7f16;&#x89e3;&#x7801;/VideoAudioBasic/VideoAudioBasic"
+      customWorkingDirectory = "/Users/liangpengshuai/iQIYI/&#x97f3;&#x89c6;&#x9891;&#x7f16;&#x89e3;&#x7801;/Code/video_audio_basic/VideoAudioBasic/VideoAudioBasic"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
