@@ -11,6 +11,7 @@
 		D941B4FD229F85350041CBDA /* yuvprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D941B4F2229F85350041CBDA /* yuvprocessor.cpp */; };
 		D941B504229F89610041CBDA /* pcm_processor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D941B502229F89610041CBDA /* pcm_processor.cpp */; };
 		D941B51122A4D05F0041CBDA /* h264_praser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D941B50F22A4D05F0041CBDA /* h264_praser.cpp */; };
+		D96E1DE422A66BAA00C2F368 /* aac_praser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D96E1DE222A66BAA00C2F368 /* aac_praser.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,9 @@
 		D941B50F22A4D05F0041CBDA /* h264_praser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = h264_praser.cpp; sourceTree = "<group>"; };
 		D941B51022A4D05F0041CBDA /* h264_praser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = h264_praser.hpp; sourceTree = "<group>"; };
 		D96E1DE122A65DD300C2F368 /* h264.h264 */ = {isa = PBXFileReference; lastKnownFileType = file; path = h264.h264; sourceTree = "<group>"; };
+		D96E1DE222A66BAA00C2F368 /* aac_praser.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = aac_praser.cpp; sourceTree = "<group>"; };
+		D96E1DE322A66BAA00C2F368 /* aac_praser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = aac_praser.hpp; sourceTree = "<group>"; };
+		D9A17AA822BB788A008105E6 /* helloyuv.yuv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = helloyuv.yuv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				D941B4ED229F85350041CBDA /* test.jpeg */,
 				D941B4F2229F85350041CBDA /* yuvprocessor.cpp */,
 				D941B4F6229F85350041CBDA /* yuvprocessor.hpp */,
+				D9A17AA822BB788A008105E6 /* helloyuv.yuv */,
 			);
 			path = color_space;
 			sourceTree = "<group>";
@@ -101,6 +106,8 @@
 				D941B508229F9DFF0041CBDA /* original_pcm.pcm */,
 				D941B502229F89610041CBDA /* pcm_processor.cpp */,
 				D941B503229F89610041CBDA /* pcm_processor.hpp */,
+				D96E1DE222A66BAA00C2F368 /* aac_praser.cpp */,
+				D96E1DE322A66BAA00C2F368 /* aac_praser.hpp */,
 			);
 			path = audio;
 			sourceTree = "<group>";
@@ -174,6 +181,7 @@
 				D941B51122A4D05F0041CBDA /* h264_praser.cpp in Sources */,
 				D941B504229F89610041CBDA /* pcm_processor.cpp in Sources */,
 				D941B4FD229F85350041CBDA /* yuvprocessor.cpp in Sources */,
+				D96E1DE422A66BAA00C2F368 /* aac_praser.cpp in Sources */,
 				D941B497229D330E0041CBDA /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

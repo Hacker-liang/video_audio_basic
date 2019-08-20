@@ -38,9 +38,13 @@ typedef struct {
     int startcodeprefix_len;   //nalu startcode占用的长度
     unsigned int len;   //去掉startcode的nalu的长度
     unsigned int max_size;
-    int forbidden_bit;
+    
+    //这三个属性是nalu的header
+    int forbidden_bit;    //禁止位
     int nalu_refrence_idc;  //nal重要性指示，标志该NAL单元的重要性，值越大，越重要，解码器在解码处理不过来的时候，可以丢掉重要性为0的NALU。
     int nalu_unit_type;    //NALU类型，占用5bit
+    
+    //这个是nalu的具体data，也就是RBSP  RBSP+HEADER组成了nalu
     char *buf;
 }NALU_t;
 

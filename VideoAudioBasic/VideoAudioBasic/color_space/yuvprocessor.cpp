@@ -15,7 +15,6 @@ int yuv420_split(char *url, int w, int h) {
     FILE *y_fp = fopen("output_420_y.y", "wb+");
     FILE *u_fp = fopen("output_420_u.y", "wb+");
     FILE *v_fp = fopen("output_420_v.y", "wb+");
-
     //yuv420格式的图片采样是4:2:0，每个分量需要8bit（1个字节），每个像素需要1个Y分量，1/4个U分量，1/4个V分量
     //所以这里分配了w*h*3/2个字节
     unsigned char *pic = (unsigned char *)malloc(w*h*3/2);
